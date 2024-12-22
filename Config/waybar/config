@@ -1,0 +1,148 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 24,
+    
+    "modules-left": ["battery","cpu","memory","temperature"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": ["idle_inhibitor","wireplumber","backlight","network","clock"],
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "format-icons": {
+            "urgent": "  ",
+            "active": "  ",
+            "default": "  "
+        },
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [], 
+            "4": [], 
+            "5": [],
+            "6": [],
+            "7": []
+        }
+    },
+
+    "battery": {
+        "interval": 1,
+        "states": {
+            "low": 30,
+            "critical": 15
+        },
+        "format": "{icon}   {capacity}%",
+        "format-charging": "{icon}  {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "cpu": {
+        "interval": 1,
+        "states": {
+            "moderate": 50,
+            "high": 70,
+            "critical": 95
+        },
+        "format": "   {usage}%",
+        "on-click": "kitty --class floating btop"
+    },
+
+    "memory": {
+        "interval": 1,
+        "states": {
+            "moderate": 50,
+            "high": 70,
+            "critical": 95
+        },
+        "format": "   {used}GiB",
+        "on-click": "kitty --class floating btop"
+    },
+
+    "temperature": {
+        "interval": 1,
+        "states": {
+            "moderate": 40,
+            "high": 60
+        },
+        "critical-threshold": 80,
+        "format-critical": "󱃂   {temperatureC}°C",
+        "format": "󰔐   {temperatureC}°C",
+        "on-click": "kitty --class floating btop"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons":{
+            "activated": " 󰈈 ",
+            "deactivated": " 󰛑 "
+        }
+    },
+
+    "wireplumber": {
+        "format": "{icon}   {volume}%",
+        "format-muted": "",
+        "on-click": "helvum",
+        "format-icons": ["", "", ""],
+        "max-volume": 150,
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+    },
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon}   {percent}%",
+        "on-scroll-down": "light -U 5",
+        "on-scroll-up": "light -A 5",
+        "format-icons": ["󱩎", "󱩒", "󰛨"]
+    },
+
+    "bluetooth": {
+	    "format": "   {status}",
+	    "format-disabled": "",
+	    "format-connected": "  {num_connections} connected",
+	    "tooltip-format": "{controller_alias}\t{controller_address}",
+	    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+	    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+    },
+
+    "network": {
+        "format": "{icon}",
+        "format-alt": "{ipaddr}/{cidr} {icon}",
+        "format-alt-click": "click-right",
+        "format-wifi": "{icon}   {signalStrength}%",
+        "format-icons": {
+            "wifi": ["󰤟", "󰤢", "󰤥" ,"󰤨"],
+            "ethernet": [""],
+            "disconnected": ["󰤮"]
+        },
+        "on-click": "kitty --class floating nmtui",
+        "tooltip-format": "{ifname}: {ipaddr}"
+    },
+
+    "clock": {
+        "interval": 1,
+        "format": "   {:%H:%M:%S}",
+        "format-alt": "   {:%A, %B %d, %Y}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+                    "mode"          : "year",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "on-scroll"     : 1,
+                    "format": {
+                              "months":     "<span color='#ffead3'><b>{}</b></span>",
+                              "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                              "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                              "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                              }
+                    },
+        "actions":  {
+                    "on-click-right": "mode",
+                    "on-scroll-up": "shift_up",
+                    "on-scroll-down": "shift_down"
+                    }
+    }
+}

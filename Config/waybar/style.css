@@ -1,0 +1,47 @@
+*{
+    font-family: JetBrainsMono;
+    font-size: 13px;
+    min-height: 0;
+    color: white;
+}
+
+#waybar {
+    background-color: transparent;
+}
+
+#workspaces {
+    border-radius: 100px;
+    border: solid 2px;
+    border-color: white;
+    padding: 0px 2px;
+}
+
+#workspaces button{
+    border-radius: 100px;
+    padding: 1px 1px;
+    font-weight: bolder;
+    background-color: transparent;
+}
+
+#battery,#cpu,#memory,#temperature,#idle_inhibitor,#wireplumber,#backlight,#network,#clock {
+    border-radius: 100px;
+    border: solid 2px;
+    border-color: white;
+    padding: 0px 10px;
+    margin: 0px 5px;
+}
+
+#battery.low,#cpu.moderate,#memory.moderate,#temperature.moderate {
+    color: #ffffbb;
+    border-color: #ffffbb;
+}
+
+#battery.critical,#cpu.high,#memory.high,#temperature.high {
+    color: #ffbbbb;
+    border-color: #ffbbbb;
+}
+
+#cpu.critical,#memory.critical,#temperature.critical {
+    color: #ddbbff;
+    border-color: #ddbbff;
+}
